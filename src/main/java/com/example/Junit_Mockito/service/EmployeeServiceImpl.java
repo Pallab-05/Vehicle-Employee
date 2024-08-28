@@ -5,6 +5,7 @@ import com.example.Junit_Mockito.exception.EmployeeNotFoundException;
 import com.example.Junit_Mockito.repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl  {
 
-
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     public EmployeeServiceImpl(EmployeeRepository employeeRepository) {

@@ -13,6 +13,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode
 @ToString
+@Builder
 @JsonPropertyOrder({"id","date","name","startingLatitude","startingLongitude","endingLatitude","endingLongitude"})
 public class Vehicle {
     @Id

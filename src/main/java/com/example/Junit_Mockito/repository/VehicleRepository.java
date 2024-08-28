@@ -10,6 +10,10 @@ import java.util.List;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle,Long> {
-    @Query(value = "SELECT id, date, name,starting_latitude,starting_longitude,ending_latitude,ending_longitude FROM vehicle WHERE name = :name", nativeQuery = true)
+    @Query(value = "SELECT id," +
+            " date, name," +
+            "starting_latitude,starting_longitude," +
+            "ending_latitude,ending_longitude FROM vehicle WHERE name = :name",
+            nativeQuery = true)
     List<Vehicle> findListOfVehicleByName(@Param("name") String name);
 }

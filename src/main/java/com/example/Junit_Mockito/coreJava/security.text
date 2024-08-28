@@ -1,0 +1,15 @@
+6
+
+In the project I was involved, we used security at a couple of different levels:
+
+Security at individual route level in Zuul.
+Security at each internal service
+Here is the flowchart for the security model used in our Spring Cloud project,
+
+When Zuul receives a request, it checks if a route exists for the request.
+If a route exists, checks if the route is secured based on custom configuration.
+If the route is secured, authenticates the request.
+Once the request is authenticated at Zuul, Zuul again checks if the internal service, to which request is to be routed, is secured based on configuration.
+If the internal service is secured, creates a new Authentication header based on the user credentials (stored in the custom configuration) before routing the service to the internal service.
+Once the internal service receives the request from Zuul, it checks if the request needs to be authenticated.
+Once authenticated, processes the request and sends the response back.
