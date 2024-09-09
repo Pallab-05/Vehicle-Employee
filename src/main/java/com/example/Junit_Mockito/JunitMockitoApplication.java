@@ -1,6 +1,8 @@
 package com.example.Junit_Mockito;
 
+import com.example.Junit_Mockito.entity.User;
 import com.example.Junit_Mockito.entity.Vehicle;
+import com.example.Junit_Mockito.repository.UserRepository;
 import com.example.Junit_Mockito.repository.VehicleRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +10,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Date;
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class JunitMockitoApplication implements CommandLineRunner {
 	@Autowired
 	VehicleRepository vehicleRepository;
+	@Autowired
+	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(JunitMockitoApplication.class, args);
 	}
@@ -24,6 +30,10 @@ public class JunitMockitoApplication implements CommandLineRunner {
 	}
 	@Override
 	public void run(String... args) throws Exception {
+		User user=new User(1l,"pallab","p@123");
+		User Admin=new User(2l,"bunty","b@123");
+		userRepository.save(user);
+		userRepository.save(Admin);
 		Vehicle vehicle1=new Vehicle(1L,new Date(2024-05-01),"Honda",22.6118, 75.77786,22.61184,75.77786);
 		Vehicle vehicle2=new Vehicle(2L,new Date(2024-05-02),"Honda", 22.6118, 75.77786,22.61184,75.77786);
 		Vehicle vehicle3=new Vehicle(3L,new Date(2024-05-03),"Honda", 22.6118, 75.77786,22.61184,75.77786);
